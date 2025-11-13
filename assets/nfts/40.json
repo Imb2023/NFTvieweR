@@ -1,0 +1,35 @@
+{
+  "name": "PoP #40",
+  "description": "prove the proof is yours",
+  "image": "ipfs://NewUriToReplace/images/40.png",
+  "dna": "84ddf3fd2810f740416f64f8728bb7bc313bafd5",
+  "edition": 40,
+  "date": 1762744955474,
+  "imageHash": "b48e5d965eb397df0966548298ca85796186a4069c3dde3afa0b18f912d19f92",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "land1"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater1"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater1"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater1"
+    }
+  ]
+}

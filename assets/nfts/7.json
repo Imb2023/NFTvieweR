@@ -1,0 +1,35 @@
+{
+  "name": "PoP #7",
+  "description": "prove the proof is yours",
+  "image": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXB3ZmowczltZ3ZkM3JnbndzN3gzeXMwZ3ZmOXBiOGdvOTU1YzcxdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lJNoBCvQYp7nq/giphy.gif",
+  "dna": "1e29fe068ee332c60d695880afec2633160f8323",
+  "edition": 7,
+  "date": 1762744956559,
+  "imageHash": "8e6c25b6125481705ca0f52d8b4c967029934099d7bc2249a2ef0277e5306ef9",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "land2"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater1"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    }
+  ]
+}
