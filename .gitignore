@@ -41,3 +41,41 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# ✅ Added below — protects local signing configs, env files, and other build caches
+
+# Android
+android/.gradle/
+android/local.properties
+android/key.properties
+android/app/key.jks
+gradle-wrapper.jar
+
+# iOS/macOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/ephemeral/
+macos/Pods/
+macos/Flutter/ephemeral/
+
+# Windows/Linux
+windows/flutter/
+linux/flutter/
+
+# Environment & secrets
+.env
+*.keystore
+*.jks
+*.pem
+*.p12
+*.cert
+*.key
+
+# Logs / temporary files
+*.tmp
+Thumbs.db
+
+# Node/npm (if used)
+node_modules/

@@ -1,0 +1,45 @@
+# Enforce consistent line endings (LF for all code)
+* text=auto eol=lf
+
+# Treat Dart, YAML, and source files as text
+*.dart text
+*.yaml text
+*.yml text
+*.json text
+*.md text
+*.html text
+*.css text
+*.js text
+
+# Ensure images and binaries are treated as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.ttf binary
+*.otf binary
+*.a binary
+*.so binary
+*.exe binary
+*.dll binary
+*.keystore binary
+*.jks binary
+
+# Keep lock files consistent
+pubspec.lock text eol=lf
+package-lock.json text eol=lf
+yarn.lock text eol=lf
+
+# Platform specific
+*.sh text eol=lf
+*.bat text eol=crlf
+
+# Avoid diffing generated/binary files
+build/* binary
+ios/Flutter/Flutter.framework/** binary
+android/app/build/** binary
+
+# GitHub linguist overrides (optional: improves language stats)
+*.dart linguist-language=Dart
