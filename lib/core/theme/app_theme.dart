@@ -8,7 +8,7 @@ class AppTheme {
       brightness: Brightness.light,
       colorSchemeSeed: Colors.tealAccent[700],
       textTheme: GoogleFonts.interTextTheme(),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),

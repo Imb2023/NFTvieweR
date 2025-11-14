@@ -4,23 +4,18 @@ import '../models/nft_model.dart';
 
 class NftService {
   Future<List<Nft>> loadLocalNfts() async {
-    // Load Flutter’s asset manifest
-    final manifestContent = await rootBundle.loadString('AssetManifest.json');
-    final Map<String, dynamic> manifestMap = json.decode(manifestContent);
-
-    // Find all files inside assets/nfts/ that end with .json
-    final nftPaths = manifestMap.keys
-        .where(
-            (path) => path.startsWith('assets/nfts/') && path.endsWith('.json'))
-        .toList();
+    // Load the index.json
+    final indexContent = await rootBundle.loadString('assets/nfts/index.json');
+    final List<dynamic> nftFiles = json.decode(indexContent);
 
     // Load and parse each NFT JSON file
-    final List<Nft> nfts = [];
-    for (final path in nftPaths) {
-      final jsonString = await rootBundle.loadString(path);
-      final Map<String, dynamic> jsonData = json.decode(jsonString);
-      nfts.add(Nft.fromJson(jsonData));
-    }
+    final List<Nft> nfts = await Future.wait(
+      nftFiles.map((file) async {
+        final jsonString = await rootBundle.loadString('assets/$file');
+        final Map<String, dynamic> jsonData = json.decode(jsonString);
+        return Nft.fromJson(jsonData);
+      }),
+    );
 
     return nfts;
   }
