@@ -20,10 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
     _nfts = _service.loadLocalNfts();
   }
 
+  int _columnCount(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    if (width >= 2000) return 5;
+    if (width >= 1400) return 4;
+    if (width >= 1000) return 3;
+    return 2; // phones + small screens
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("NFT showcase")),
+      appBar: AppBar(title: const Text("NFT Showcase")),
       body: FutureBuilder<List<Nft>>(
         future: _nfts,
         builder: (context, snapshot) {
@@ -32,16 +41,23 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           final nfts = snapshot.data!;
-          return GridView.builder(
-            padding: const EdgeInsets.all(10),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              childAspectRatio: 0.8,
-            ),
-            itemCount: nfts.length,
-            itemBuilder: (context, i) => NftCard(nft: nfts[i]),
+
+          return LayoutBuilder(
+            builder: (context, constraints) {
+              final columns = _columnCount(context);
+
+              return GridView.builder(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: columns,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  childAspectRatio: 0.75,
+                ),
+                itemCount: nfts.length,
+                itemBuilder: (context, i) => NftCard(nft: nfts[i]),
+              );
+            },
           );
         },
       ),

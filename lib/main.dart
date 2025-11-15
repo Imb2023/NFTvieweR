@@ -5,6 +5,9 @@ import 'screens/home_screen.dart';
 // flutter config --no-enable-windows-desktop is set to ignore win fluttrdr
 
 void main() {
+  FlutterError.onError = (details) {
+    FlutterError.dumpErrorToConsole(details);
+  };
   runApp(const MyApp());
 }
 

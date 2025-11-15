@@ -1,0 +1,24 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "windows\\CMakeLists.txt",
+      "projectTarget": "fluttrapp.exe (Install)",
+      "name": "fluttrapp.exe (Install)"
+    },
+    {
+      "type": "default",
+      "project": "windows\\CMakeLists.txt",
+      "projectTarget": "fluttrapp.exe (runner\\fluttrapp.exe)",
+      "name": "fluttrapp.exe (runner\\fluttrapp.exe)"
+    },
+    {
+      "type": "default",
+      "project": "windows\\CMakeLists.txt",
+      "projectTarget": "(fluttrapp) fluttrapp.exe (runner\\fluttrapp.exe)",
+      "name": "(fluttrapp) fluttrapp.exe (runner\\fluttrapp.exe)"
+    }
+  ]
+}
