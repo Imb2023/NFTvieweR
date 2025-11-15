@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttrapp/screens/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData light() {
     return ThemeData(
+      scaffoldBackgroundColor: bckgrndklr,
       useMaterial3: true,
       brightness: Brightness.light,
       colorSchemeSeed: Colors.tealAccent[700],
