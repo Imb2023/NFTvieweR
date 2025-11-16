@@ -1,0 +1,35 @@
+{
+  "name": "PoP #13",
+  "description": "prove the proof is yours",
+  "image": "/assets/images/land1removewater.png",
+  "dna": "290dd7f93fcf37961041d61ba165b11383038538",
+  "edition": 13,
+  "date": 1762744952932,
+  "imageHash": "9873962106f3ed66b0276a2d446b30a5ece5bd2ad52be6eaa1e05dcbedcbb8e1",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "land2"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater1"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater1"
+    },
+    {
+      "trait_type": "layer1",
+      "value": "land1removewater"
+    }
+  ]
+}

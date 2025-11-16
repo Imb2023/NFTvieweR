@@ -69,7 +69,7 @@ msix_config:
   identity_name: "ismasigns.nftviewer"
   msix_version: "1.0.0.0"
   publisher: "CN=IsmaSigns, O=IsmaSigns, L=Dallas, S=TEXAS, C=US"
-  certificate_path: "C:\\Users\\visiblyankerd/Desktop\\Documents\\MyCert.pfx"  # Use forward slashes here for Flutter
+  certificate_path: "C:/Users/visiblyankerd/Desktop/Documents/MyCert.pfx"  # Use forward slashes here for Flutter
   certificate_password: "beta4#@5"
   capabilities: "internetClient,location" # Required capabilities
   # logo_path: "assets/logo.png" # Path to your app's logo
@@ -83,9 +83,10 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/images/
+    - assets/
     - assets/nfts/
     - assets/nfts/index.json
+    - assets/images/land1removewater.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

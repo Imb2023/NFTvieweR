@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-const Color bckgrndklr = Color(0xFF191B1E);
+const Color bckgrndklr = Color.fromARGB(255, 71, 78, 88);
