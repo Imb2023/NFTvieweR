@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:extended_image/extended_image.dart';
+
 
 class ResponsiveImage extends StatelessWidget {
   final String? assetPath;
@@ -33,13 +34,25 @@ class ResponsiveImage extends StatelessWidget {
     if (assetPath != null) {
       image = Image.asset(assetPath!, fit: fit);
     } else {
-      image = CachedNetworkImage(
-        imageUrl: networkUrl!,
+      image = ExtendedImage.network(
+        networkUrl!,
         fit: fit,
-        placeholder: (_, __) => const Center(
-          child: CircularProgressIndicator(strokeWidth: 1.5),
-        ),
-        errorWidget: (_, __, ___) => const Icon(Icons.broken_image, size: 40),
+        cache: true,
+        enableLoadState: true,
+        gaplessPlayback: true, // prevents GIF restart glitch
+        filterQuality: FilterQuality.high,
+        loadStateChanged: (state) {
+          switch (state.extendedImageLoadState) {
+            case LoadState.loading:
+              return const Center(
+                child: CircularProgressIndicator(strokeWidth: 1.5),
+              );
+            case LoadState.failed:
+              return const Icon(Icons.broken_image, size: 40);
+            default:
+              return null;
+          }
+        },
       );
     }
 

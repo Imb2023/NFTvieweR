@@ -16,9 +16,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Nft> _allNfts = [];
   List<Nft> _visibleNfts = [];
+
+  bool _loadingInitial = true;
   bool _loadingMore = false;
 
-  final int _batchSize = 20;
+  /// Increase these for smoother UX on desktop screens
+  final int _initialBatchSize = 60;
+  final int _batchSize = 30;
 
   @override
   void initState() {
@@ -28,21 +32,30 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadInitial() async {
+    setState(() {
+      _loadingInitial = true;
+      _visibleNfts.clear();
+    });
+
     final loaded = await _service.loadLocalNfts();
     _allNfts = loaded;
 
-    // Load the first batch
-    final initialBatch = _allNfts.take(_batchSize).toList();
+    final first = _allNfts.take(_initialBatchSize).toList();
 
+    if (!mounted) return;
     setState(() {
-      _visibleNfts = initialBatch;
+      _visibleNfts = first;
+      _loadingInitial = false;
     });
   }
 
   void _handleScroll() {
     final position = _scrollController.position;
 
-    if (position.pixels >= position.maxScrollExtent - 200) {
+    /// Trigger load when user reaches 90% of bottom
+    if (!_loadingMore &&
+        _visibleNfts.length < _allNfts.length &&
+        position.pixels > position.maxScrollExtent * 0.9) {
       _loadMore();
     }
   }
@@ -53,16 +66,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() => _loadingMore = true);
 
-    // Slight delay to mimic loading and prevent hammering UI
-    await Future.delayed(const Duration(milliseconds: 200));
+    await Future.delayed(const Duration(milliseconds: 180)); // UI smoothness
 
     final start = _visibleNfts.length;
     final end = (start + _batchSize).clamp(0, _allNfts.length);
 
-    final nextBatch = _allNfts.sublist(start, end);
+    final next = _allNfts.sublist(start, end);
 
+    if (!mounted) return;
     setState(() {
-      _visibleNfts.addAll(nextBatch);
+      _visibleNfts.addAll(next);
       _loadingMore = false;
     });
   }
@@ -71,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (width >= 2000) return 5;
     if (width >= 1400) return 4;
     if (width >= 1000) return 3;
-    return 2; // mobile & small screens
+    return 2;
   }
 
   @override
@@ -84,35 +97,54 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("NFT Showcase")),
-      body: _allNfts.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : LayoutBuilder(
-              builder: (context, constraints) {
-                final columns = _columnCount(constraints.maxWidth);
 
-                return GridView.builder(
-                  controller: _scrollController,
+      /// Pull-to-refresh for all platforms
+      body: RefreshIndicator(
+        onRefresh: _loadInitial,
+        child: _loadingInitial
+            ? const Center(child: CircularProgressIndicator())
+            : LayoutBuilder(
+          builder: (context, constraints) {
+            final columns = _columnCount(constraints.maxWidth);
+
+            return CustomScrollView(
+              controller: _scrollController,
+              slivers: [
+                SliverPadding(
                   padding: const EdgeInsets.all(12),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: columns,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 0.75,
+                  sliver: SliverGrid(
+                    gridDelegate:
+                    SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: columns,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 0.75,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                        return NftCard(nft: _visibleNfts[index]);
+                      },
+                      childCount: _visibleNfts.length,
+                    ),
                   ),
-                  itemCount: _visibleNfts.length + 1,
-                  itemBuilder: (context, index) {
-                    // Loading indicator at the bottom
-                    if (index == _visibleNfts.length) {
-                      return _loadingMore
-                          ? const Center(child: CircularProgressIndicator())
-                          : const SizedBox.shrink();
-                    }
+                ),
 
-                    return NftCard(nft: _visibleNfts[index]);
-                  },
-                );
-              },
-            ),
+                /// Bottom loading indicator
+                SliverToBoxAdapter(
+                  child: _loadingMore
+                      ? const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 24),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                      : const SizedBox.shrink(),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }
