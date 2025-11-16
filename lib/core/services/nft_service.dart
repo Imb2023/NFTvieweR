@@ -5,7 +5,7 @@ import '../models/nft_model.dart';
 class NftService {
   Future<List<Nft>> loadLocalNfts() async {
     // Load the index.json
-    final indexContent = await rootBundle.loadString('assets/nfts/index.json');
+    final indexContent = await rootBundle.loadString('assets/data/index.json');
     final List<dynamic> nftFiles = json.decode(indexContent);
 
     // Load and parse each NFT JSON file

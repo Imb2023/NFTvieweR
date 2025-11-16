@@ -33,7 +33,7 @@ void main() async {
   // pathsForIndex.sort();
 
   // Write index.json with the filtered list
-  final indexFile = File('assets/nfts/index.json');
+  final indexFile = File('assets/data/index.json');
   indexFile.writeAsStringSync(
       const JsonEncoder.withIndent('  ').convert(pathsForIndex));
 

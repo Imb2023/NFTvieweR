@@ -1,5 +1,5 @@
 name: fluttrapp
-description: "A new Flutter project."
+description: "nft viewer."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -69,10 +69,10 @@ msix_config:
   identity_name: "ismasigns.nftviewer"
   msix_version: "1.0.0.0"
   publisher: "CN=IsmaSigns, O=IsmaSigns, L=Dallas, S=TEXAS, C=US"
-  certificate_path: "C:/Users/visiblyankerd/Desktop/Documents/MyCert.pfx"  # Use forward slashes here for Flutter
-  certificate_password: "beta4#@5"
+  certificate_path: "pasteyourlocarionhere"  # Use forward slashes here for Flutter
+  certificate_password: "   "
   capabilities: "internetClient,location" # Required capabilities
-  # logo_path: "assets/logo.png" # Path to your app's logo
+  logo_path: "assets/images/logo.png" # Path to your app's logo
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -83,10 +83,9 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/
+    - assets/images/
     - assets/nfts/
-    - assets/nfts/index.json
-    - assets/images/land1removewater.png
+    - assets/data/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

@@ -1,11 +1,11 @@
 {
-  "name": "PoP #7",
+  "name": "PoP #9",
   "description": "prove the proof is yours",
-  "image": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjZ6NHk5aHV6NGNveWtvcnJvdXVkNXUyOWp6cWxpcWM4cDB5ZW5nZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kigHJwQpyjYcK3VFxJ/giphy.gif",
-  "dna": "1e29fe068ee332c60d695880afec2633160f8323",
-  "edition": 7,
-  "date": 1762744956559,
-  "imageHash": "8e6c25b6125481705ca0f52d8b4c967029934099d7bc2249a2ef0277e5306ef9",
+  "image": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWlnZmNjN2J2cDR0M25na3Z1Y2F0ejFuZXEzdmNyN2J3d2RtbXJ5NSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/UjPBQkSYNQc1y/giphy.gif",
+  "dna": "599586d288dffd79eb3b1a6015cea8286432b85c",
+  "edition": 9,
+  "date": 1762744953275,
+  "imageHash": "bfb33afe5de0c7e0e6bd9dbf20f35440bc0eb647679cc28579768e915b338ba5",
   "attributes": [
     {
       "trait_type": "Background",
@@ -21,7 +21,7 @@
     },
     {
       "trait_type": "layer1",
-      "value": "land1removewater"
+      "value": "land1removewater1"
     },
     {
       "trait_type": "layer1",
@@ -29,7 +29,7 @@
     },
     {
       "trait_type": "layer1",
-      "value": "land1removewater"
+      "value": "land1removewater1"
     }
   ]
 }
